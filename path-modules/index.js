@@ -11,3 +11,6 @@ console.log('Joined path', joinPath)
 
 const resolvePath = path.resolve('/users','documents','node','project');
 console.log('resolved path', resolvePath)
+
+const normalizePath = path.normalize('users','documents','node','project');
+console.log('Normalized path', normalizePath)
