@@ -14,3 +14,6 @@ const filePath = path.join(dataFolder, "example.txt");
 
 fs.writeFileSync(filePath, "Hello am David Kamau");
 console.log("file created");
+
+const readFileContent = fs.readFileSync(filePath, "utf-8");
+console.log("File content : ", readFileContent);
