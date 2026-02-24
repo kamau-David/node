@@ -3,6 +3,8 @@ const path = require("path");
 
 const dataFolder = path.join(__dirname, "data");
 
+//synchrounous way of writimg codes
+
 if (!fs.existsSync(dataFolder)) {
   //creating a directory
   fs.mkdirSync(dataFolder);
@@ -21,3 +23,13 @@ console.log("File content : ", readFileContent); //reading file content
 
 fs.appendFileSync(filePath, "\n Am 21 year old ");
 console.log("new line added");
+
+// assynchronous way of writting codes
+
+const assyncFilePath = path.join(dataFolder, "assync-example.txt");
+fs.writeFile(assyncFilePath, "Hello from assync node", (err) => {
+  if (err) throw err;
+  console.log("assync file created");
+});
+
+
