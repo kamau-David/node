@@ -30,6 +30,14 @@ const assyncFilePath = path.join(dataFolder, "assync-example.txt");
 fs.writeFile(assyncFilePath, "Hello from assync node", (err) => {
   if (err) throw err;
   console.log("assync file created");
+
+  fs.readFile(assyncFilePath, "utf-8", (err, data) => {
+    if (err) throw err;
+    console.log("assync file content:", data);
+  });
+
+  fs.appendFile(assyncFilePath, "\nThis is a new line created", (err) => {
+    if (err) throw err;
+    console.log("new assync line created");
+  });
 });
-
-
