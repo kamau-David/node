@@ -9,3 +9,8 @@ if (!fs.existsSync(dataFolder)) {
 } else {
   console.log("file already exists");
 }
+
+const filePath = path.join(dataFolder, "example.txt");
+
+fs.writeFileSync(filePath, "Hello am David Kamau");
+console.log("file created");
