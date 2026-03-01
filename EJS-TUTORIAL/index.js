@@ -4,3 +4,4 @@ const app = express();
 
 app.set("veiw engine", "ejs");
 app.set("views", path.join(__dirname, "views"));
+console.log("hello");
