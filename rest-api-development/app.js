@@ -55,6 +55,23 @@ app.post("/add", (req, res) => {
   });
 });
 
+//updating a book
+app.put("/update/:id", (req, res) => {
+  const findBook = books.find((bookItem) => bookItem.id === req.params.id);
+
+  if (findBook) {
+    findBook.title = req.body.title || findBook.title;
+    res.status(200).json({
+      message: `Book with id ${req.params.id} is successfully updated`,
+      data: findBook,
+    });
+  } else {
+    res.status(404).json({
+      message: "book not found try using another id",
+    });
+  }
+});
+
 const PORT = 3000;
 
 app.listen(PORT, () => {
