@@ -40,6 +40,21 @@ app.get("/get/:id", (req, res) => {
   }
 });
 
+//adding a newbook
+app.post("/add", (req, res) => {
+  const newBook = [
+    {
+      id: books.length + 1,
+      title: `Book ${books.length + 1}`,
+    },
+  ];
+  books.push(newBook);
+  res.status(200).json({
+    message: "New Book added successfully",
+    data: newBook,
+  });
+});
+
 const PORT = 3000;
 
 app.listen(PORT, () => {
