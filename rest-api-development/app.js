@@ -42,12 +42,11 @@ app.get("/get/:id", (req, res) => {
 
 //adding a newbook
 app.post("/add", (req, res) => {
-  const newBook = [
-    {
-      id: books.length + 1,
-      title: `Book ${books.length + 1}`,
-    },
-  ];
+  const newBook = {
+    id: Math.floor(Math.random() * 1000).toString(),
+    title: `Book ${Math.floor(Math.random() * 1000)}`,
+  };
+
   books.push(newBook);
   res.status(200).json({
     message: "New Book added successfully",
@@ -64,6 +63,22 @@ app.put("/update/:id", (req, res) => {
     res.status(200).json({
       message: `Book with id ${req.params.id} is successfully updated`,
       data: findBook,
+    });
+  } else {
+    res.status(404).json({
+      message: "book not found try using another id",
+    });
+  }
+});
+
+//deleting
+app.delete("/delete/:id", (req, res) => {
+  const findBookByIndex = books.findIndex((item) => item.id === req.params.id);
+  if (findBookByIndex !== -1) {
+    const deleteBook = books.splice(findBookByIndex, 1);
+    res.status(200).json({
+      message: `Book at index ${req.params.id} deleted successfully`,
+      data: deleteBook[0],
     });
   } else {
     res.status(404).json({
