@@ -28,6 +28,18 @@ app.get("/get", (req, res) => {
   res.json(books);
 });
 
+//accessing a single book
+app.get("/get/:id", (req, res) => {
+  const book = books.find((item) => item.id === req.params.id);
+  if (book) {
+    res.status(200).json(book);
+  } else {
+    res.status(404).json({
+      message: "book not found please try another id",
+    });
+  }
+});
+
 const PORT = 3000;
 
 app.listen(PORT, () => {
